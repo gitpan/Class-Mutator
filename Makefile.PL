@@ -1,11 +1,16 @@
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+my $module = 'Mutator.pm';
 WriteMakefile(
-    'NAME'		=> 'Class::Mutator',
-    'VERSION_FROM'	=> 'Mutator.pm', 
-    'PREREQ_PM'		=> {Memoize => 0.52}, 
-    'LIBS'		=> [''], 
-    'DEFINE'		=> '', 
-    'INC'		=> '', 
-);
+              NAME         => 'Class::Mutator',
+              VERSION_FROM => $module,
+              PREREQ_PM    => {
+                               Test::More => 0,
+                               Memoize => 0.52,
+                              },
+              AUTHOR       => 'Greg McCarroll <greg@mccarroll.demon.co.uk>',
+             );
+
+
+
+
+

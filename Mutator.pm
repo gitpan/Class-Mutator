@@ -7,7 +7,7 @@ Class::Mutator
 
 =head1 DESCRIPTION
 
-Class::Mutator adds the power of 'dynamic polymorphism' to Perl objects, 
+Class::Mutator adds the power of 'dynamic polymorphism' to Perl objects,
 its similar to Michael Schwern's Sex.pm which he was working on around the
 same time, only a little bit more predictable.
 
@@ -17,17 +17,17 @@ from other packages. With most recently mutated packages having precedence
 when methods are defiend in more than one package.
 
 This module came about while i was doing some training at the BBC and someone
-asked how you could do this easily, after discussion with my fellow 
+asked how you could do this easily, after discussion with my fellow
 London.pm'ers in particular Piers Cawley this module came about.
 
 =head1 TODO
 
 Lots to be done at the minute it requires the extremely useful Memoize module,
 this module as always allows be to increase performance without having to think
-i'm going to write some code that retains performance if Memoize is not 
+i'm going to write some code that retains performance if Memoize is not
 installed.
 
-I'm also going to take Michael Schwern's idea of Sex.pm choosing method 
+I'm also going to take Michael Schwern's idea of Sex.pm choosing method
 precendence randomly and write an Agent::Sex on top of Steve Purkis' Agent
 framework so we can start to do some evolutionary Agents in Perl.
 
@@ -36,7 +36,7 @@ framework so we can start to do some evolutionary Agents in Perl.
 =cut
 
 package Class::Mutator;
-$VERSION=' 0.2';
+$VERSION='0.03';
 
 
 use Memoize;
@@ -54,8 +54,8 @@ sub build_mutation_package {
     my $package_name = 'Mutator::'.join('::',@ingredients);
     $code .= "package $package_name;\n";
     @ingredients = reverse(@ingredients);
-    @ingredients = map {s/__/::/g; $_}  @ingredients; 
-    $code .= '@ISA = qw('.join(' ',@ingredients).");\n";  
+    @ingredients = map {s/__/::/g; $_}  @ingredients;
+    $code .= '@ISA = qw('.join(' ',@ingredients).");\n";
     eval $code || die "Ack problem with mutant code ...\n$code\n";
     return $package_name;
 }
@@ -76,25 +76,25 @@ sub build_package_list {
     $curr = ref($self);
 
     if ($curr =~ m/^Mutator::/) {
-	($curr = $curr ) =~ s/^Mutator:://;
-	@ingredients = split /::/,$curr;
+        ($curr = $curr ) =~ s/^Mutator:://;
+        @ingredients = split /::/,$curr;
     } else {
-	($curr = $curr) =~ s/::/__/g;
-	push(@ingredients,$curr);    
+        ($curr = $curr) =~ s/::/__/g;
+        push(@ingredients,$curr);
     }
 
     @ingredients = grep !/^$package$/, @ingredients;
 
     if ($op eq '+') {
-	($package = $package) =~ s/::/__/g;
-	push(@ingredients,$package);
+        ($package = $package) =~ s/::/__/g;
+        push(@ingredients,$package);
     } elsif ($op eq '-') {
-	# We've already got this functionality out of the grep 
-	# a few lines above
+        # We've already got this functionality out of the grep
+        # a few lines above
     } else {
-	# Invalid operation
+        # Invalid operation
     }
- 
+
     return @ingredients;
 }
 

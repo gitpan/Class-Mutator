@@ -1,4 +1,11 @@
 
+# NOTE
+#
+# If this module was created today it would be in the Acme Namespace,
+# I do not really expect anyone to use it. However at least it now
+# has tests.
+#
+
 Controlled Dynamic Polymorphism In Perl, requires Memoize. See the
 embedded POD for more Information.
 

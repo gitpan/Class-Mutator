@@ -1,5 +1,5 @@
-ChangeLog
 MANIFEST
 Makefile.PL
 Mutator.pm
 README
+t/Class-Mutator.t
