@@ -36,7 +36,7 @@ framework so we can start to do some evolutionary Agents in Perl.
 =cut
 
 package Class::Mutator;
-$VERSION=' 0.1';
+$VERSION=' 0.2';
 
 
 use Memoize;
